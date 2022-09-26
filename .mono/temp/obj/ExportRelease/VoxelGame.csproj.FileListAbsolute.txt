@@ -1,0 +1,9 @@
+C:\Dev\Projects\VoxelGame\.mono\temp\bin\ExportRelease\VoxelGame.dll
+C:\Dev\Projects\VoxelGame\.mono\temp\bin\ExportRelease\VoxelGame.pdb
+C:\Dev\Projects\VoxelGame\.mono\temp\obj\ExportRelease\VoxelGame.csproj.AssemblyReference.cache
+C:\Dev\Projects\VoxelGame\.mono\temp\obj\ExportRelease\VoxelGame.GeneratedMSBuildEditorConfig.editorconfig
+C:\Dev\Projects\VoxelGame\.mono\temp\obj\ExportRelease\VoxelGame.AssemblyInfoInputs.cache
+C:\Dev\Projects\VoxelGame\.mono\temp\obj\ExportRelease\VoxelGame.AssemblyInfo.cs
+C:\Dev\Projects\VoxelGame\.mono\temp\obj\ExportRelease\VoxelGame.csproj.CoreCompileInputs.cache
+C:\Dev\Projects\VoxelGame\.mono\temp\obj\ExportRelease\VoxelGame.dll
+C:\Dev\Projects\VoxelGame\.mono\temp\obj\ExportRelease\VoxelGame.pdb
