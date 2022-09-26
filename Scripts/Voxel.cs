@@ -95,22 +95,22 @@ public static class Voxel {
     public static readonly Dictionary<VoxelType, VoxelParameters> VOXEL_LIST = new Dictionary<VoxelType, VoxelParameters>() {
         { VoxelType.Air, new VoxelParameters(new Vector2(0, 0),  new Vector2(0, 0), 
             new Vector2(0, 0), new Vector2(0, 0),
-            new Vector2(0, 0),new Vector2(0, 0), 
+            new Vector2(0, 0), new Vector2(0, 0), 
             false) 
         },
         { VoxelType.Grass, new VoxelParameters(new Vector2(2, 0),  new Vector2(2, 0), 
             new Vector2(2, 0), new Vector2(2, 0),
-            new Vector2(0, 0),new Vector2(1, 0), 
+            new Vector2(0, 0), new Vector2(1, 0), 
             true) 
         },
         { VoxelType.Dirt, new VoxelParameters(new Vector2(1, 0),  new Vector2(1, 0), 
             new Vector2(1, 0), new Vector2(1, 0),
-            new Vector2(1, 0),new Vector2(1, 0), 
+            new Vector2(1, 0), new Vector2(1, 0), 
             true) 
         },
         { VoxelType.Stone, new VoxelParameters(new Vector2(0, 1),  new Vector2(0, 1), 
             new Vector2(0, 1), new Vector2(0, 1),
-            new Vector2(0, 1),new Vector2(0, 1), 
+            new Vector2(0, 1), new Vector2(0, 1), 
             true) 
         }
     };
