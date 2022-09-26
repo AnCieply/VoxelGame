@@ -1,32 +1,25 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Dev\\Projects\\VoxelGame\\VoxelGame.csproj": {}
+    "/home/miami/Dev/Projects/VoxelGame/VoxelGame.csproj": {}
   },
   "projects": {
-    "C:\\Dev\\Projects\\VoxelGame\\VoxelGame.csproj": {
+    "/home/miami/Dev/Projects/VoxelGame/VoxelGame.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Dev\\Projects\\VoxelGame\\VoxelGame.csproj",
+        "projectUniqueName": "/home/miami/Dev/Projects/VoxelGame/VoxelGame.csproj",
         "projectName": "VoxelGame",
-        "projectPath": "C:\\Dev\\Projects\\VoxelGame\\VoxelGame.csproj",
-        "packagesPath": "C:\\Users\\miami\\.nuget\\packages\\",
-        "outputPath": "C:\\Dev\\Projects\\VoxelGame\\.mono\\temp\\obj\\",
+        "projectPath": "/home/miami/Dev/Projects/VoxelGame/VoxelGame.csproj",
+        "packagesPath": "/home/miami/.nuget/packages/",
+        "outputPath": "/home/miami/Dev/Projects/VoxelGame/.mono/temp/obj/",
         "projectStyle": "PackageReference",
-        "fallbackFolders": [
-          "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
-        ],
         "configFilePaths": [
-          "C:\\Users\\miami\\AppData\\Roaming\\NuGet\\NuGet.Config",
-          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
-          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+          "/home/miami/.nuget/NuGet/NuGet.Config"
         ],
         "originalTargetFrameworks": [
           "net472"
         ],
         "sources": {
-          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
-          "C:\\Program Files\\dotnet\\library-packs": {},
           "https://api.nuget.org/v3/index.json": {}
         },
         "frameworks": {
@@ -44,7 +37,15 @@
       "frameworks": {
         "net472": {
           "targetAlias": "net472",
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.401\\RuntimeIdentifierGraph.json"
+          "dependencies": {
+            "Microsoft.NETFramework.ReferenceAssemblies": {
+              "suppressParent": "All",
+              "target": "Package",
+              "version": "[1.0.2, )",
+              "autoReferenced": true
+            }
+          },
+          "runtimeIdentifierGraphPath": "/usr/lib64/dotnet/sdk/6.0.108/RuntimeIdentifierGraph.json"
         }
       }
     }

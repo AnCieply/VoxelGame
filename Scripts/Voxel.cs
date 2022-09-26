@@ -1,16 +1,16 @@
 ﻿using Godot;
 using System.Collections.Generic;
 
-public enum FaceDir {
-    East = 0,
-    West = 1,
-    North = 2,
-    South = 3,
-    Top = 4,
-    Bottom = 5
+public enum FaceDir : byte {
+    East,
+    West,
+    North,
+    South,
+    Top,
+    Bottom
 }
 
-public enum VoxelType {
+public enum VoxelType : byte {
     Air,
     Grass,
     Dirt,
@@ -44,55 +44,55 @@ public class VoxelParameters {
 public static class Voxel {
     public static readonly Vector2 TEX_ATLAS_SIZE = new Vector2(3, 2);
     
-    private static Vector3[] eastVertices = {
+    private static readonly Vector3[] EAST_VERTICES = {
         new Vector3(1.0f, 0.0f, 0.0f),
         new Vector3(1.0f, 1.0f, 0.0f),
         new Vector3(0.0f, 1.0f, 0.0f),
         new Vector3(0.0f, 0.0f, 0.0f)
     };
 
-    private static Vector3[] westVertices = {
+    private static readonly Vector3[] WEST_VERTICES = {
         new Vector3(0.0f, 0.0f, 1.0f),
         new Vector3(0.0f, 1.0f, 1.0f),
         new Vector3(1.0f, 1.0f, 1.0f),
         new Vector3(1.0f, 0.0f, 1.0f)
     };
 
-    private static Vector3[] northVertices = {
+    private static readonly Vector3[] NORTH_VERTICES = {
         new Vector3(1.0f, 0.0f, 1.0f),
         new Vector3(1.0f, 1.0f, 1.0f),
         new Vector3(1.0f, 1.0f, 0.0f),
         new Vector3(1.0f, 0.0f, 0.0f)
     };
 
-    private static Vector3[] southVertices = {
+    private static readonly Vector3[] SOUTH_VERTICES = {
         new Vector3(0.0f, 0.0f, 0.0f),
         new Vector3(0.0f, 1.0f, 0.0f),
         new Vector3(0.0f, 1.0f, 1.0f),
         new Vector3(0.0f, 0.0f, 1.0f)
     };
 
-    private static Vector3[] topVertices = {
+    private static readonly Vector3[] TOP_VERTICES = {
         new Vector3(0.0f, 1.0f, 1.0f),
         new Vector3(0.0f, 1.0f, 0.0f),
         new Vector3(1.0f, 1.0f, 0.0f),
         new Vector3(1.0f, 1.0f, 1.0f)
     };
 
-    private static Vector3[] bottomVertices = {
+    private static readonly Vector3[] BOTTOM_VERTICES = {
         new Vector3(1.0f, 0.0f, 1.0f),
         new Vector3(1.0f, 0.0f, 0.0f),
         new Vector3(0.0f, 0.0f, 0.0f),
         new Vector3(0.0f, 0.0f, 1.0f)
     };
 
-    public static Vector3[][] vertices = {
-        eastVertices,  westVertices,
-        northVertices, southVertices,
-        topVertices,   bottomVertices
+    public static readonly Vector3[][] VERTICES = {
+        EAST_VERTICES,  WEST_VERTICES,
+        NORTH_VERTICES, SOUTH_VERTICES,
+        TOP_VERTICES,   BOTTOM_VERTICES
     };
 
-    public static Dictionary<VoxelType, VoxelParameters> voxelList = new Dictionary<VoxelType, VoxelParameters>() {
+    public static readonly Dictionary<VoxelType, VoxelParameters> VOXEL_LIST = new Dictionary<VoxelType, VoxelParameters>() {
         { VoxelType.Air, new VoxelParameters(new Vector2(0, 0),  new Vector2(0, 0), 
             new Vector2(0, 0), new Vector2(0, 0),
             new Vector2(0, 0),new Vector2(0, 0), 
