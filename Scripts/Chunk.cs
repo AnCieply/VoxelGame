@@ -1,39 +1,42 @@
 using Godot;
 
-[Tool]
 public class Chunk : MeshInstance
 {
 	// Chunk size.
-	private static readonly int WIDTH = 16;
-	private static readonly int HEIGHT = 256;
-	private static readonly int DEPTH = 16;
-	private VoxelType[,,] voxels;
+	public static readonly int WIDTH = 16;
+	public static readonly int HEIGHT = 256;
+	public static readonly int DEPTH = 16;
+	public VoxelType[,,] voxels;
 
 	// Mesh generation.
 	private SurfaceTool st;
 	private ArrayMesh mesh;
 	private SpatialMaterial voxelTextureMat;
 	
+	// World object reference.
+	private World world;
+	
 	public override void _Ready() {
 		st = new SurfaceTool();
 		voxelTextureMat = (SpatialMaterial)ResourceLoader.Load("res://Textures/VoxelTexturesMat.tres");
-	}
-	
-	public override void _Process(float delta) {
-		editorDebug();
+
+		world = (World)GetParent();
 		
 		generateVoxels();
+		
+		voxels[14, 128, 15] = VoxelType.Air;
+		
 		generateChunkMesh();
 	}
-	
-	// Remove later.
-	private void editorDebug() {
-		voxelTextureMat = (SpatialMaterial)ResourceLoader.Load("res://Textures/VoxelTexturesMat.tres");
-	} 
+
+	// Sets chunk position in chunk grid, not in the world coordinates.
+	public void setPosition(int x, int z) {
+		Translation = new Vector3(x * WIDTH, 0, z * DEPTH);
+	}
 
 	// Generates a value for each voxel in the chunk.
 	// No mesh is generated here.
-	private void generateVoxels() {
+	public void generateVoxels() {
 		voxels = new VoxelType[WIDTH, HEIGHT, DEPTH];
 		
 		for (int x = 0; x < WIDTH; x++)
@@ -45,7 +48,7 @@ public class Chunk : MeshInstance
 				}
 	}
 
-	private void generateChunkMesh() {
+	public void generateChunkMesh() {
 		st.Begin(Mesh.PrimitiveType.Triangles);
 
 		for (int x = 0; x < WIDTH; x++)
@@ -61,13 +64,19 @@ public class Chunk : MeshInstance
 	}
 
 	private bool checkTransparent(int x, int y, int z) {
-		if  (x >= 0 && x < WIDTH && y >= 0 && y < HEIGHT && z >= 0 && z < DEPTH) {
-			if (Voxel.VOXEL_LIST[voxels[x, y, z]].isSolid) 
-				return false;
+		// if (x >= -1 && x < WIDTH + 1 && y >= 0 && y < HEIGHT && z >= -1 && z < DEPTH + 1) {
+		// 	if (world.chunks.ContainsKey(new Vector2(Mathf.Floor((float)x / Chunk.WIDTH), Mathf.Floor((float)z / Chunk.DEPTH)))) {
+		// 		if (Voxel.VOXEL_LIST[world.getBlock(x, y, z)].isSolid) return false;  
+		// 	}
+		// }
+		
+		if (x >= -1 && x < WIDTH + 1 && y >= 0 && y < HEIGHT && z >= -1 && z < DEPTH + 1) {
+			if (Voxel.VOXEL_LIST[world.getBlock(x, y, z)].isSolid) return false;
 		}
+
 		return true;
 	}
-	
+
 	private void genVoxel(int x, int y, int z) {
 		if (voxels[x, y, z] == VoxelType.Air) return; 
 		
