@@ -58,13 +58,30 @@ public class World : Spatial {
 					continue;
 				
 				Chunk c = chunks[chunkPos];
-				
+
 				if (c.isModified) {
-					c.generateChunkMesh();
+					ThreadPool.QueueUserWorkItem((object state) => genChunkMesh(state, c));
 					c.isModified = false;
 				}
-					
 			}
+	}
+
+	private void genChunkMesh(object state, Chunk c) {
+		SurfaceTool st = new SurfaceTool();
+		
+		st.Begin(Mesh.PrimitiveType.Triangles);
+
+		for (int x = 0; x < Chunk.WIDTH; x++)
+			for (int y = 0; y < Chunk.HEIGHT; y++)
+				for (int z = 0; z < Chunk.DEPTH; z++)
+					c.genVoxel(x, y, z, st);
+
+		st.GenerateNormals();
+		st.SetMaterial(c.voxelTextureMat);
+
+		c.mesh = st.Commit();
+		c.Mesh = c.mesh;
+		c.CreateTrimeshCollision();
 	}
 	
 	// Returns chunk at the position in the chunk grid.

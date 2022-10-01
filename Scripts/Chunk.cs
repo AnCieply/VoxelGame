@@ -11,9 +11,8 @@ public class Chunk : MeshInstance
 	public Vector2 position;
 
 	// Mesh generation.
-	private SurfaceTool st;
-	private ArrayMesh mesh;
-	private SpatialMaterial voxelTextureMat;
+	public ArrayMesh mesh;
+	public SpatialMaterial voxelTextureMat;
 	
 	// World object reference.
 	private World world;
@@ -23,7 +22,6 @@ public class Chunk : MeshInstance
 	public bool isModified = true;
 	
 	public override void _Ready() {
-		st = new SurfaceTool();
 		voxelTextureMat = (SpatialMaterial)ResourceLoader.Load("res://Textures/VoxelTexturesMat.tres");
 		// Disables texture filtering.
 		voxelTextureMat.AlbedoTexture.Flags = 2;
@@ -51,19 +49,7 @@ public class Chunk : MeshInstance
 	}
 
 	public void generateChunkMesh() {
-		st.Begin(Mesh.PrimitiveType.Triangles);
-
-		for (int x = 0; x < WIDTH; x++)
-			for (int y = 0; y < HEIGHT; y++)
-				for (int z = 0; z < DEPTH; z++)
-					genVoxel(x, y, z);
-
-		st.GenerateNormals();
-		st.SetMaterial(voxelTextureMat);
-
-		mesh = st.Commit();
-		this.Mesh = mesh;
-		CreateTrimeshCollision();
+		
 	}
 
 	private bool checkTransparent(int x, int y, int z) {
@@ -74,35 +60,35 @@ public class Chunk : MeshInstance
 		return true;
 	}
 
-	private void genVoxel(int x, int y, int z) {
+	public void genVoxel(int x, int y, int z, SurfaceTool st) {
 		if (voxels[x, y, z] == VoxelType.Air) return; 
 		
 		if (checkTransparent(x, y, z - 1 ))  
 			genFace(FaceDir.East, new Vector3(x, y, z), 
-				Voxel.VOXEL_LIST[voxels[x, y, z]].texEast);
+				Voxel.VOXEL_LIST[voxels[x, y, z]].texEast, st);
 		
 		if (checkTransparent(x, y, z + 1))  
 			genFace(FaceDir.West, new Vector3(x, y, z), 
-				Voxel.VOXEL_LIST[voxels[x, y, z]].texWest);
+				Voxel.VOXEL_LIST[voxels[x, y, z]].texWest, st);
 		
 		if (checkTransparent(x + 1, y, z))  
 			genFace(FaceDir.North, new Vector3(x, y, z), 
-				Voxel.VOXEL_LIST[voxels[x, y, z]].texNorth);
+				Voxel.VOXEL_LIST[voxels[x, y, z]].texNorth, st);
 		
 		if (checkTransparent(x - 1, y, z))  
 			genFace(FaceDir.South, new Vector3(x, y, z), 
-				Voxel.VOXEL_LIST[voxels[x, y, z]].texSouth);
+				Voxel.VOXEL_LIST[voxels[x, y, z]].texSouth, st);
 		
 		if (checkTransparent(x, y + 1, z))  
 			genFace(FaceDir.Top, new Vector3(x, y, z), 
-				Voxel.VOXEL_LIST[voxels[x, y, z]].texTop);
+				Voxel.VOXEL_LIST[voxels[x, y, z]].texTop, st);
 		
 		if (checkTransparent(x, y - 1, z))  
 			genFace(FaceDir.Bottom, new Vector3(x, y, z), 
-				Voxel.VOXEL_LIST[voxels[x, y, z]].texBottom);
+				Voxel.VOXEL_LIST[voxels[x, y, z]].texBottom, st);
 	}
 	
-	private void genFace(FaceDir direction, Vector3 offset, Vector2 texOffset) {
+	private void genFace(FaceDir direction, Vector3 offset, Vector2 texOffset, SurfaceTool st) {
 		// Position vertices.
 		var a = Voxel.VERTICES[(int)direction][0] + offset;
 		var b = Voxel.VERTICES[(int)direction][1] + offset;
