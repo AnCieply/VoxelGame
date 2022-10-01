@@ -415,24 +415,32 @@
     ]
   },
   "packageFolders": {
-    "/home/miami/.nuget/packages/": {}
+    "C:\\Users\\miami\\.nuget\\packages\\": {},
+    "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "/home/miami/Dev/Projects/VoxelGame/VoxelGame.csproj",
+      "projectUniqueName": "C:\\Dev\\Projects\\VoxelGame\\VoxelGame.csproj",
       "projectName": "VoxelGame",
-      "projectPath": "/home/miami/Dev/Projects/VoxelGame/VoxelGame.csproj",
-      "packagesPath": "/home/miami/.nuget/packages/",
-      "outputPath": "/home/miami/Dev/Projects/VoxelGame/.mono/temp/obj/",
+      "projectPath": "C:\\Dev\\Projects\\VoxelGame\\VoxelGame.csproj",
+      "packagesPath": "C:\\Users\\miami\\.nuget\\packages\\",
+      "outputPath": "C:\\Dev\\Projects\\VoxelGame\\.mono\\temp\\obj\\",
       "projectStyle": "PackageReference",
+      "fallbackFolders": [
+        "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
+      ],
       "configFilePaths": [
-        "/home/miami/.nuget/NuGet/NuGet.Config"
+        "C:\\Users\\miami\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
+        "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
       "originalTargetFrameworks": [
         "net472"
       ],
       "sources": {
+        "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+        "C:\\Program Files\\dotnet\\library-packs": {},
         "https://api.nuget.org/v3/index.json": {}
       },
       "frameworks": {
@@ -458,7 +466,7 @@
             "autoReferenced": true
           }
         },
-        "runtimeIdentifierGraphPath": "/usr/lib64/dotnet/sdk/6.0.108/RuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.401\\RuntimeIdentifierGraph.json"
       }
     }
   }

@@ -1,11 +1,11 @@
 {
   "version": 2,
-  "dgSpecHash": "CMQ7H3WwOsZTPXHpQtcQfHkPavv4M99xP2htY2GpnikdFqQIhhUmq4NRf/DX+L0NyeOfNfyXh7AVdf+nzDDnxA==",
+  "dgSpecHash": "7EO41TF+KR8hj87GXkUKsA/MLRDtqgrqMC88fKbzgbK5ipg1stJJWqh1UpE+QXxYOigQq+NOgAzEPltAXJs6OQ==",
   "success": true,
-  "projectFilePath": "/home/miami/Dev/Projects/VoxelGame/VoxelGame.csproj",
+  "projectFilePath": "C:\\Dev\\Projects\\VoxelGame\\VoxelGame.csproj",
   "expectedPackageFiles": [
-    "/home/miami/.nuget/packages/microsoft.netframework.referenceassemblies/1.0.2/microsoft.netframework.referenceassemblies.1.0.2.nupkg.sha512",
-    "/home/miami/.nuget/packages/microsoft.netframework.referenceassemblies.net472/1.0.2/microsoft.netframework.referenceassemblies.net472.1.0.2.nupkg.sha512"
+    "C:\\Users\\miami\\.nuget\\packages\\microsoft.netframework.referenceassemblies\\1.0.2\\microsoft.netframework.referenceassemblies.1.0.2.nupkg.sha512",
+    "C:\\Users\\miami\\.nuget\\packages\\microsoft.netframework.referenceassemblies.net472\\1.0.2\\microsoft.netframework.referenceassemblies.net472.1.0.2.nupkg.sha512"
   ],
   "logs": []
 }

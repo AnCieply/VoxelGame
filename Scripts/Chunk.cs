@@ -8,6 +8,8 @@ public class Chunk : MeshInstance
 	public static readonly int DEPTH = 16;
 	public VoxelType[,,] voxels;
 
+	public Vector2 position;
+
 	// Mesh generation.
 	private SurfaceTool st;
 	private ArrayMesh mesh;
@@ -16,17 +18,17 @@ public class Chunk : MeshInstance
 	// World object reference.
 	private World world;
 	
+	// Thread related.
+	public bool isGenerated = false;
+	public bool isModified = true;
+	
 	public override void _Ready() {
 		st = new SurfaceTool();
 		voxelTextureMat = (SpatialMaterial)ResourceLoader.Load("res://Textures/VoxelTexturesMat.tres");
+		// Disables texture filtering.
+		voxelTextureMat.AlbedoTexture.Flags = 2;
 
 		world = (World)GetParent();
-		
-		generateVoxels();
-		
-		voxels[14, 128, 15] = VoxelType.Air;
-		
-		generateChunkMesh();
 	}
 
 	// Sets chunk position in chunk grid, not in the world coordinates.
@@ -58,18 +60,13 @@ public class Chunk : MeshInstance
 
 		st.GenerateNormals();
 		st.SetMaterial(voxelTextureMat);
-		
+
 		mesh = st.Commit();
 		this.Mesh = mesh;
+		CreateTrimeshCollision();
 	}
 
 	private bool checkTransparent(int x, int y, int z) {
-		// if (x >= -1 && x < WIDTH + 1 && y >= 0 && y < HEIGHT && z >= -1 && z < DEPTH + 1) {
-		// 	if (world.chunks.ContainsKey(new Vector2(Mathf.Floor((float)x / Chunk.WIDTH), Mathf.Floor((float)z / Chunk.DEPTH)))) {
-		// 		if (Voxel.VOXEL_LIST[world.getBlock(x, y, z)].isSolid) return false;  
-		// 	}
-		// }
-		
 		if (x >= -1 && x < WIDTH + 1 && y >= 0 && y < HEIGHT && z >= -1 && z < DEPTH + 1) {
 			if (Voxel.VOXEL_LIST[world.getBlock(x, y, z)].isSolid) return false;
 		}

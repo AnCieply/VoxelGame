@@ -1,12 +1,10 @@
 [gd_scene load_steps=3 format=2]
 
+[ext_resource path="res://Scenes/Player.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Scripts/World.cs" type="Script" id=3]
-[ext_resource path="res://Scripts/camera.gd" type="Script" id=4]
 
 [node name="World" type="Spatial"]
 script = ExtResource( 3 )
 
-[node name="Camera" type="Camera" parent="."]
+[node name="Player" parent="." instance=ExtResource( 1 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 150, 0 )
-fov = 91.5
-script = ExtResource( 4 )
